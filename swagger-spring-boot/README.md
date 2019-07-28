@@ -1,6 +1,6 @@
 # Spring-Boot-Swagger
 
-Starter Projects to for spring boot with Swagger
+Project to kick start spring boot with Swagger
 
 ## Getting Started
 

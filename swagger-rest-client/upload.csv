@@ -1,0 +1,4 @@
+ENTITY_ID, ENTITY_NAME, ENTITY_TYPE
+1001, kafkaReader, string
+1002, mineReader, string
+1003, forceReader, string

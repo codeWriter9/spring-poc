@@ -33,6 +33,14 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+/**
+ * 
+ * 
+ * 
+ * 
+ * @author Sanjay Ghosh
+ *
+ */
 @RestController
 @RequestMapping("/upload")
 @Api(value = "Guidelines")
@@ -44,6 +52,13 @@ public class UploadController {
 	@Autowired
 	private RestTemplate restTemplate;
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * @param file
+	 * @return
+	 */
 	@PostMapping
 	@ApiOperation(value = "Make a POST request to upload the file", produces = "application/json", consumes = MULTIPART_FORM_DATA_VALUE)
 	@ApiResponses(value = { @ApiResponse(code = 200, message = "The POST call is Successful"),
@@ -71,10 +86,22 @@ public class UploadController {
 		return restTemplate.postForEntity("http://localhost:8000/atlas", data, String.class);
 	}
 
+	/**
+	 * 
+	 * 
+	 * @return
+	 */
 	public CSVReader csvReader() {
 		return new CSVReaderBuilder(reader).build();
 	}
 
+	/**
+	 * 
+	 * 
+	 * 
+	 * @return
+	 * @throws JSONException
+	 */
 	public String json() throws JSONException {
 		JSONArray array = new JSONArray();
 		JSONObject object = new JSONObject();

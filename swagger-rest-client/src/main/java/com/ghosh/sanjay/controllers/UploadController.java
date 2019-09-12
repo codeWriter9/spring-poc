@@ -85,6 +85,9 @@ public class UploadController {
 
 		return restTemplate.postForEntity("http://localhost:8000/atlas", data, String.class);
 	}
+	
+	
+	
 
 	/**
 	 * 

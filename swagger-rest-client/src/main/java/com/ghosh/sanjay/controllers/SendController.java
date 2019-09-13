@@ -1,18 +1,24 @@
 package com.ghosh.sanjay.controllers;
 
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
+
+import java.lang.invoke.MethodHandles;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import io.swagger.annotations.Api;
@@ -26,7 +32,7 @@ import io.swagger.annotations.ApiResponses;
 @Api(value = "Guidelines")
 public class SendController {
 
-	private static Logger LOG = LoggerFactory.getLogger(SendController.class.getName());
+	private static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Autowired
 	private RestTemplate restTemplate;
@@ -46,15 +52,21 @@ public class SendController {
 	public ResponseEntity<String> sendName(
 			@ApiParam(name = "name", value = "Enter You Name", required = true) @RequestParam("name") String name) {
 		String json = "";
+		ResponseEntity<String> response = null;
 		try {
 			json = name(name);
+			response = restTemplate.exchange("http://localhost:8000/atlas", HttpMethod.POST,
+					new HttpEntity<String>(json), String.class);
+		} catch (RestClientException e) {
+			LOG.error(e.getMessage(), e);
+			return new ResponseEntity<String>("Failed", INTERNAL_SERVER_ERROR);
 		} catch (JSONException e) {
 			LOG.error(e.getMessage(), e);
-			return new ResponseEntity<String>("Failed", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<String>("Failed", BAD_REQUEST);
 		}
-		return restTemplate.postForEntity("http://localhost:8000/atlas", json, String.class);
+		return response;
 	}
-	
+
 	public String name(String name) throws JSONException {
 		JSONObject object = new JSONObject();
 		object.put("name", name);

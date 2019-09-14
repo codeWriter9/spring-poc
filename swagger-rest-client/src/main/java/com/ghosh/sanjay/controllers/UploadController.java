@@ -40,8 +40,6 @@ import io.swagger.annotations.ApiResponses;
 /**
  * 
  * 
- * 
- * 
  * @author Sanjay Ghosh
  *
  */
@@ -56,6 +54,9 @@ public class UploadController {
 
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Autowired
+	private String url;
 
 	/**
 	 * 
@@ -81,7 +82,7 @@ public class UploadController {
 				reader = new InputStreamReader(file.getInputStream());
 
 			data = json();			
-			response = restTemplate.exchange("http://localhost:8000/atlas", HttpMethod.POST, new HttpEntity<String>(data), String.class);
+			response = restTemplate.exchange(url, HttpMethod.POST, new HttpEntity<String>(data), String.class);
 		} catch (RestClientException | IOException e) {
 			LOG.error(e.getMessage(), e);
 			return new ResponseEntity<String>("Failed", INTERNAL_SERVER_ERROR);

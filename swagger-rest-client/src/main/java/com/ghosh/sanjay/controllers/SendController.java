@@ -27,6 +27,13 @@ import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+/**
+ * 
+ * 
+ * 
+ * @author Sanjay Ghosh
+ *
+ */
 @RestController
 @RequestMapping("/send")
 @Api(value = "Guidelines")
@@ -36,13 +43,16 @@ public class SendController {
 
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Autowired
+	private String url;
 
 	/**
 	 * 
 	 * 
 	 * 
 	 * @param file
-	 * @return
+	 * @return ResponseEntity<String>
 	 */
 	@PostMapping
 	@ApiOperation(value = "Make a POST request to upload the file", produces = "application/json", consumes = APPLICATION_JSON_VALUE)
@@ -55,7 +65,7 @@ public class SendController {
 		ResponseEntity<String> response = null;
 		try {
 			json = name(name);
-			response = restTemplate.exchange("http://localhost:8000/atlas", HttpMethod.POST,
+			response = restTemplate.exchange(url, HttpMethod.POST,
 					new HttpEntity<String>(json), String.class);
 		} catch (RestClientException e) {
 			LOG.error(e.getMessage(), e);
@@ -67,10 +77,16 @@ public class SendController {
 		return response;
 	}
 
+	/**
+	 * 
+	 * 
+	 * @param name
+	 * @return
+	 * @throws JSONException
+	 */
 	public String name(String name) throws JSONException {
 		JSONObject object = new JSONObject();
 		object.put("name", name);
 		return object.toString();
 	}
-
 }

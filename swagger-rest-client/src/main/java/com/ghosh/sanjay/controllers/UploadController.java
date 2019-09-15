@@ -46,7 +46,7 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @RequestMapping("/upload")
 @Api(value = "Guidelines")
-public class UploadController {
+public class UploadController extends AbstractRestController {
 
 	private static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
@@ -85,10 +85,10 @@ public class UploadController {
 			response = restTemplate.exchange(url, HttpMethod.POST, new HttpEntity<String>(data), String.class);
 		} catch (RestClientException | IOException e) {
 			LOG.error(e.getMessage(), e);
-			return new ResponseEntity<String>("Failed", INTERNAL_SERVER_ERROR);
+			return internalServerError(e.getMessage());
 		} catch (JSONException e) {
 			LOG.error(e.getMessage(), e);
-			return new ResponseEntity<String>("Failed", HttpStatus.BAD_REQUEST);
+			return badRequest(e.getMessage());
 		}
 
 		return response;

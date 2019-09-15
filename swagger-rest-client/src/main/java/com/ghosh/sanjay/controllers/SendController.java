@@ -1,7 +1,5 @@
 package com.ghosh.sanjay.controllers;
 
-import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 import java.lang.invoke.MethodHandles;
@@ -37,13 +35,13 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @RequestMapping("/send")
 @Api(value = "Guidelines")
-public class SendController {
+public class SendController extends AbstractRestController {
 
 	private static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Autowired
 	private RestTemplate restTemplate;
-	
+
 	@Autowired
 	private String url;
 
@@ -65,14 +63,13 @@ public class SendController {
 		ResponseEntity<String> response = null;
 		try {
 			json = name(name);
-			response = restTemplate.exchange(url, HttpMethod.POST,
-					new HttpEntity<String>(json), String.class);
+			response = restTemplate.exchange(url, HttpMethod.POST, new HttpEntity<String>(json), String.class);
 		} catch (RestClientException e) {
 			LOG.error(e.getMessage(), e);
-			return new ResponseEntity<String>("Failed", INTERNAL_SERVER_ERROR);
+			return internalServerError(e.getMessage());
 		} catch (JSONException e) {
 			LOG.error(e.getMessage(), e);
-			return new ResponseEntity<String>("Failed", BAD_REQUEST);
+			return badRequest(e.getMessage());
 		}
 		return response;
 	}

@@ -1,4 +1,4 @@
-# Spring-Boot-Swagger
+# Spring-Boot-Swagger-REST-Client
 
 Project to kick start spring boot with Swagger with rest client
 

@@ -6,3 +6,4 @@ A Collection of simple proof of concepts in Spring
 
 [Spring Boot Hello World](https://github.com/codeWriter9/spring-poc/tree/master/hello-world)  
 [Spring Boot Swagger](https://github.com/codeWriter9/spring-poc/tree/master/swagger-spring-boot)
+[Spring Boot Swagger REST Client](https://github.com/codeWriter9/spring-poc/tree/master/swagger-rest-client)

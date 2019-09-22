@@ -15,7 +15,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 @EnableAutoConfiguration
-
 public class App {
 
 	private static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());

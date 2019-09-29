@@ -4,12 +4,18 @@ import static springfox.documentation.builders.PathSelectors.any;
 import static springfox.documentation.builders.RequestHandlerSelectors.basePackage;
 import static springfox.documentation.spi.DocumentationType.SWAGGER_2;
 
+import java.io.IOException;
+import java.lang.invoke.MethodHandles;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.boot.web.client.RestTemplateCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -20,6 +26,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @PropertySource("classpath:rest.properties")
 @Component
 public class AppConfig {
+	
+	private static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Value("${rest.client.basic.auth.username}")
 	private String userName;
@@ -32,6 +40,19 @@ public class AppConfig {
 
 	@Value("${rest.service.controllers.base}")
 	private String basePackage;
+	
+	@Value("classpath:${rest.schema.base}")
+	private Resource schema;
+	
+	@Bean Object schema() {
+		try {
+			LOG.info(" schema " + schema.getFile());
+		} catch (IOException e) {
+			LOG.error(e.getMessage());
+		}
+		return null;
+	}
+	
 
 	@Bean("restTemplate")
 	public RestTemplate restTemplate() {
@@ -49,6 +70,9 @@ public class AppConfig {
 
 		};
 	}
+	
+	
+	
 
 	@Configuration
 	@EnableSwagger2

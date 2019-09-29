@@ -4,9 +4,17 @@ import static springfox.documentation.builders.PathSelectors.any;
 import static springfox.documentation.builders.RequestHandlerSelectors.basePackage;
 import static springfox.documentation.spi.DocumentationType.SWAGGER_2;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.lang.invoke.MethodHandles;
+import java.util.Collections;
 
+import org.everit.json.schema.Schema;
+import org.everit.json.schema.loader.SchemaLoader;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +24,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -26,7 +36,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @PropertySource("classpath:rest.properties")
 @Component
 public class AppConfig {
-	
+
 	private static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 	@Value("${rest.client.basic.auth.username}")
@@ -40,19 +50,26 @@ public class AppConfig {
 
 	@Value("${rest.service.controllers.base}")
 	private String basePackage;
-	
+
 	@Value("classpath:${rest.schema.base}")
-	private Resource schema;
-	
-	@Bean Object schema() {
-		try {
-			LOG.info(" schema " + schema.getFile());
+	private Resource schemaFile;
+
+	@Bean
+	Schema schema() {
+		Schema schema = null;
+		try (BufferedReader reader = new BufferedReader(new InputStreamReader(schemaFile.getInputStream()))) {
+			schema = SchemaLoader.load(new JSONObject(new JSONTokener(reader)));
+			LOG.info(" schema " + schema);
 		} catch (IOException e) {
 			LOG.error(e.getMessage());
+			return null;
 		}
-		return null;
+		catch (JSONException e) {
+			LOG.error(e.getMessage());
+			return null;
+		}
+		return schema;
 	}
-	
 
 	@Bean("restTemplate")
 	public RestTemplate restTemplate() {
@@ -70,9 +87,12 @@ public class AppConfig {
 
 		};
 	}
-	
-	
-	
+
+	HttpHeaders headers(MediaType mediaType) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.setAccept(Collections.singletonList(mediaType));
+		return headers;
+	}
 
 	@Configuration
 	@EnableSwagger2

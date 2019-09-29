@@ -55,20 +55,13 @@ public class AppConfig {
 	private Resource schemaFile;
 
 	@Bean
-	Schema schema() {
-		Schema schema = null;
+	public Schema schema() {		
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(schemaFile.getInputStream()))) {
-			schema = SchemaLoader.load(new JSONObject(new JSONTokener(reader)));
-			LOG.info(" schema " + schema);
-		} catch (IOException e) {
+			return SchemaLoader.load(new JSONObject(new JSONTokener(reader)));			
+		} catch (JSONException | IOException e) {
 			LOG.error(e.getMessage());
 			return null;
-		}
-		catch (JSONException e) {
-			LOG.error(e.getMessage());
-			return null;
-		}
-		return schema;
+		}		
 	}
 
 	@Bean("restTemplate")

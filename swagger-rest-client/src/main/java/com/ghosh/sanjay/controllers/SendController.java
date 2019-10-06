@@ -1,13 +1,12 @@
 package com.ghosh.sanjay.controllers;
 
+import static java.lang.invoke.MethodHandles.lookup;
+import static org.slf4j.LoggerFactory.getLogger;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-
-import java.lang.invoke.MethodHandles;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -37,7 +36,7 @@ import io.swagger.annotations.ApiResponses;
 @Api(value = "Guidelines")
 public class SendController extends AbstractRestController {
 
-	private static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+	private static Logger LOG = getLogger(lookup().lookupClass());
 
 	@Autowired
 	private RestTemplate restTemplate;

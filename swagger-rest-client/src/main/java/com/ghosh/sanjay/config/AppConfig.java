@@ -1,5 +1,7 @@
 package com.ghosh.sanjay.config;
 
+import static java.lang.invoke.MethodHandles.lookup;
+import static org.slf4j.LoggerFactory.getLogger;
 import static springfox.documentation.builders.PathSelectors.any;
 import static springfox.documentation.builders.RequestHandlerSelectors.basePackage;
 import static springfox.documentation.spi.DocumentationType.SWAGGER_2;
@@ -7,7 +9,6 @@ import static springfox.documentation.spi.DocumentationType.SWAGGER_2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.invoke.MethodHandles;
 import java.util.Collections;
 
 import org.everit.json.schema.Schema;
@@ -16,7 +17,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.boot.web.client.RestTemplateCustomizer;
@@ -37,7 +37,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Component
 public class AppConfig {
 
-	private static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+	private static Logger LOG = getLogger(lookup().lookupClass());
 
 	@Value("${rest.client.basic.auth.username}")
 	private String userName;
@@ -55,13 +55,13 @@ public class AppConfig {
 	private Resource schemaFile;
 
 	@Bean
-	public Schema schema() {		
+	public Schema schema() {
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(schemaFile.getInputStream()))) {
-			return SchemaLoader.load(new JSONObject(new JSONTokener(reader)));			
+			return SchemaLoader.load(new JSONObject(new JSONTokener(reader)));
 		} catch (JSONException | IOException e) {
 			LOG.error(e.getMessage());
 			return null;
-		}		
+		}
 	}
 
 	@Bean("restTemplate")

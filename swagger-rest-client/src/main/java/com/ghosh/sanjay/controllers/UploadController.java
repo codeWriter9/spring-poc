@@ -1,11 +1,12 @@
 package com.ghosh.sanjay.controllers;
 
+import static java.lang.invoke.MethodHandles.lookup;
+import static org.slf4j.LoggerFactory.getLogger;
 import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.lang.invoke.MethodHandles;
 import java.util.Arrays;
 import java.util.Iterator;
 
@@ -13,7 +14,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -46,13 +46,13 @@ import io.swagger.annotations.ApiResponses;
 @Api(value = "Guidelines")
 public class UploadController extends AbstractRestController {
 
-	private static Logger LOG = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-	
+	private static Logger LOG = getLogger(lookup().lookupClass());
+
 	private Reader reader;
 
 	@Autowired
 	private RestTemplate restTemplate;
-	
+
 	@Autowired
 	private String url;
 
@@ -79,7 +79,7 @@ public class UploadController extends AbstractRestController {
 			else
 				reader = new InputStreamReader(file.getInputStream());
 
-			data = json();			
+			data = json();
 			response = restTemplate.exchange(url, HttpMethod.POST, new HttpEntity<String>(data), String.class);
 		} catch (RestClientException | IOException e) {
 			LOG.error(e.getMessage(), e);
@@ -91,9 +91,6 @@ public class UploadController extends AbstractRestController {
 
 		return response;
 	}
-	
-	
-	
 
 	/**
 	 * 
@@ -115,16 +112,16 @@ public class UploadController extends AbstractRestController {
 		JSONArray array = new JSONArray();
 		JSONObject object = new JSONObject();
 		Iterator<String[]> itr = csvReader().iterator();
-		String [] headers = itr.next();			
-		LOG.info(" headers " + Arrays.toString(headers));		
-		while(itr.hasNext()) {
+		String[] headers = itr.next();
+		LOG.info(" headers " + Arrays.toString(headers));
+		while (itr.hasNext()) {
 			JSONObject intermediate = new JSONObject();
 			String[] row = itr.next();
-			for(int column=0;column<row.length;column++) {
+			for (int column = 0; column < row.length; column++) {
 				intermediate.put(headers[column], row[column]);
 			}
 			array.put(intermediate);
-		}		
+		}
 		object = array.toJSONObject(array);
 		return object.toString();
 	}

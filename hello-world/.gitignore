@@ -38,6 +38,7 @@
 hs_err_pid*
 
 
+#eclipse file(s)
 .classpath
 .project
 .*.prefs

@@ -14,11 +14,17 @@ You should only need a git client like git bash, an IDE, maven 3.x and certainly
 
 ## Running the tests
 
-run mvn clean install
+for code coverage reports
+
+```
+mvn clean test install
+```
 
 and for hosting 
 
-run spring-boot:run
+```
+spring-boot:run
+```
 
 ### Break down into end to end tests
 

@@ -20,6 +20,13 @@ and for hosting
 
 run spring-boot:run
 
+### Reach the Swagger URL
+
+'''
+http://localhost:8080/swagger-ui.html
+'''
+
+
 ### Break down into end to end tests
 
 ```

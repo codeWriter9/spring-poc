@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xsi:schemaLocation="http://www.springframework.org/schema/batch https://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<batch:job-repository />
+
+	<job id="tradeJob"
+		xmlns="http://www.springframework.org/schema/batch">
+		<step id="step1">
+			<tasklet>
+				<chunk reader="fileItemReader" processor="validatingProcessor"
+					writer="tradeWriter" commit-interval="1">
+					<streams>
+						<stream ref="fileItemReader" />
+					</streams>
+				</chunk>
+				<transaction-attributes
+					isolation="READ_COMMITTED" />
+			</tasklet>
+		</step>		
+	</job>
+
+	<bean id="validatingProcessor"
+		class="org.springframework.batch.item.validator.ValidatingItemProcessor">
+		<constructor-arg ref="tradeValidator" />
+	</bean>
+
+	<bean id="tradeWriter"
+		class="com.ghosh.sanjay.writers.TradeWriter">		
+	</bean>	
+	
+
+	<bean id="fileItemReader"
+		class="org.springframework.batch.item.file.FlatFileItemReader"
+		scope="step">
+		<property name="resource"
+			value="classpath:data/tradeJob/input/20070122.teststream.ImportTradeDataStep.txt" />
+		<property name="lineMapper">
+			<bean
+				class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name="lineTokenizer">
+					<bean
+						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+						<property name="names"
+							value="ISIN, Quantity, Price, Customer" />
+					</bean>
+				</property>
+				<property name="fieldSetMapper">
+					<bean
+						class="org.springframework.batch.sample.domain.trade.internal.TradeFieldSetMapper" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="tradeValidator"
+		class="org.springframework.batch.item.validator.SpringValidator">
+		<property name="validator">
+			<bean
+				class="com.ghosh.sanjay.validators.TradeValidator" />
+		</property>
+	</bean>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="org.h2.Driver" />
+		<property name="url" value="jdbc:h2:file:build/data/h2" />
+		<property name="username" value="sa" />
+		<property name="password" value="" />
+		<property name="maxTotal" value="2"/>
+		<property name="validationQuery" value=""/>
+		<property name="testWhileIdle" value="true"/>
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" lazy-init="true">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+</beans>

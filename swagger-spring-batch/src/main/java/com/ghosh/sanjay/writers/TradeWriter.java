@@ -17,7 +17,7 @@ public class TradeWriter extends ItemStreamSupport implements ItemWriter<Trade> 
 
 	@Override
 	public void write(List<? extends Trade> arg0) throws Exception {
-		// TODO Auto-generated method stub
+		LOG.info(" ===== Trade Writer ======= ");
 
 	}
 

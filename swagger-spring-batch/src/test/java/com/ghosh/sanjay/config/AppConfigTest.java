@@ -24,8 +24,13 @@ public class AppConfigTest {
 
 	@Test
 	public void shouldAnswerWithTrue() throws Exception {
-		//jobLauncherTestUtils.launchJob();
-		assertTrue(true);
+		try {
+			//jobLauncherTestUtils.launchJob();
+			assertTrue(true);
+		} catch (Exception e) {
+			LOG.error(e.getMessage(), e);
+			throw e;
+		}
 	}
 
 }

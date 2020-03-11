@@ -4,3 +4,36 @@ SELECT JOB_INSTANCE_ID, JOB_NAME from BATCH_JOB_INSTANCE where JOB_NAME = ? and 
 03-09 23:11:23 jdbc[2]: SQLException
 org.h2.jdbc.JdbcSQLException: Table "BATCH_JOB_INSTANCE" not found; SQL statement:
 SELECT JOB_INSTANCE_ID, JOB_NAME from BATCH_JOB_INSTANCE where JOB_NAME = ? and JOB_KEY = ? [42102-140]
+03-10 17:52:21 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "BATCH_JOB_INSTANCE" not found; SQL statement:
+SELECT JOB_INSTANCE_ID, JOB_NAME from BATCH_JOB_INSTANCE where JOB_NAME = ? and JOB_KEY = ? [42102-140]
+03-10 17:59:22 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "BATCH_JOB_INSTANCE" not found; SQL statement:
+SELECT JOB_INSTANCE_ID, JOB_NAME from BATCH_JOB_INSTANCE where JOB_NAME = ? and JOB_KEY = ? [42102-140]
+03-10 18:00:16 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "BATCH_JOB_INSTANCE" not found; SQL statement:
+SELECT JOB_INSTANCE_ID, JOB_NAME from BATCH_JOB_INSTANCE where JOB_NAME = ? and JOB_KEY = ? [42102-140]
+03-10 18:02:21 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "BATCH_JOB_INSTANCE" not found; SQL statement:
+SELECT JOB_INSTANCE_ID, JOB_NAME from BATCH_JOB_INSTANCE where JOB_NAME = ? and JOB_KEY = ? [42102-140]
+03-10 18:05:21 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "BATCH_JOB_INSTANCE" not found; SQL statement:
+SELECT JOB_INSTANCE_ID, JOB_NAME from BATCH_JOB_INSTANCE where JOB_NAME = ? and JOB_KEY = ? [42102-140]
+03-10 18:06:41 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "BATCH_JOB_INSTANCE" not found; SQL statement:
+SELECT JOB_INSTANCE_ID, JOB_NAME from BATCH_JOB_INSTANCE where JOB_NAME = ? and JOB_KEY = ? [42102-140]
+03-10 18:11:57 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "BATCH_JOB_INSTANCE" not found; SQL statement:
+SELECT JOB_INSTANCE_ID, JOB_NAME from BATCH_JOB_INSTANCE where JOB_NAME = ? and JOB_KEY = ? [42102-140]
+03-10 18:12:54 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "BATCH_JOB_INSTANCE" not found; SQL statement:
+SELECT JOB_INSTANCE_ID, JOB_NAME from BATCH_JOB_INSTANCE where JOB_NAME = ? and JOB_KEY = ? [42102-140]
+03-10 18:14:29 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "BATCH_JOB_INSTANCE" not found; SQL statement:
+SELECT JOB_INSTANCE_ID, JOB_NAME from BATCH_JOB_INSTANCE where JOB_NAME = ? and JOB_KEY = ? [42102-140]
+03-10 19:08:27 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "BATCH_JOB_INSTANCE" not found; SQL statement:
+SELECT JOB_INSTANCE_ID, JOB_NAME from BATCH_JOB_INSTANCE where JOB_NAME = ? and JOB_KEY = ? [42102-140]
+03-10 19:21:27 jdbc[2]: SQLException
+org.h2.jdbc.JdbcSQLException: Table "BATCH_JOB_INSTANCE" not found; SQL statement:
+SELECT JOB_INSTANCE_ID, JOB_NAME from BATCH_JOB_INSTANCE where JOB_NAME = ? and JOB_KEY = ? [42102-140]

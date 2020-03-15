@@ -19,7 +19,7 @@
 	<bean id="reader"
 		class="org.springframework.batch.item.file.FlatFileItemReader">
 		<property name="resource"
-			value="data/20070122.teststream.ImportTradeDataStep.txt" />
+			value="${spring.batch.job.data}" />
 		<property name="lineMapper">
 			<bean
 				class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
@@ -27,11 +27,12 @@
 					<bean
 						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
 						<property name="delimiter" value="," />
+						<property name="names" value="${spring.batch.job.data.names}" />
 					</bean>
 				</property>
 				<property name="fieldSetMapper">
 					<bean
-						class="org.springframework.batch.item.file.mapping.PassThroughFieldSetMapper" />
+						class="com.ghosh.sanjay.mappers.FieldSetToTradeMapper" />
 				</property>
 			</bean>
 		</property>

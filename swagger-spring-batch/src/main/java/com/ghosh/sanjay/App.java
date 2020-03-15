@@ -31,7 +31,7 @@ public class App implements CommandLineRunner {
 		// asList(context.getBeanDefinitionNames()).forEach((bean) -> LOG.info("bean :"
 		// + bean));
 		JobLauncher launcher = (JobLauncher) context.getBean("jobLauncher");
-		Job job = (Job) context.getBean("headerFooterSample");
+		Job job = (Job) context.getBean("tradeJob");
 		launcher.run(job, new JobParameters());
 	}
 

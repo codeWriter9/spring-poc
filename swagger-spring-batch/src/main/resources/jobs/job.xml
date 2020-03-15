@@ -9,7 +9,7 @@
 		xmlns="http://www.springframework.org/schema/batch">
 		<step id="step1">
 			<tasklet>
-				<chunk reader="reader" writer="tradeWriter"
+				<chunk reader="reader" writer="writer"
 					processor="validatingProcessor" commit-interval="1">
 				</chunk>
 			</tasklet>
@@ -39,12 +39,12 @@
 	</bean>
 
 
-	<bean id="tradeWriter"
+	<bean id="writer"
 		class="com.ghosh.sanjay.writers.TradeWriter">
 	</bean>
 
 	<bean id="validatingProcessor"
-		class="com.ghosh.sanjay.validators.TradeProcessor">
+		class="com.ghosh.sanjay.processors.TradeProcessor">
 		<property name="validator">
 			<bean
 				class="org.springframework.batch.item.validator.SpringValidator">

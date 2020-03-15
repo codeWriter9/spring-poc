@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/batch https://www.springframework.org/schema/batch/spring-batch.xsd">
+
+	<job id="headerFooterSample"
+		xmlns="http://www.springframework.org/schema/batch">
+		<step id="step1">
+			<tasklet>
+				<chunk reader="reader" writer="tradeWriter"
+					processor="validatingProcessor" commit-interval="1">
+				</chunk>
+			</tasklet>
+		</step>
+	</job>
+
+	<bean id="reader"
+		class="org.springframework.batch.item.file.FlatFileItemReader">
+		<property name="resource"
+			value="data/20070122.teststream.ImportTradeDataStep.txt" />
+		<property name="lineMapper">
+			<bean
+				class="org.springframework.batch.item.file.mapping.DefaultLineMapper">
+				<property name="lineTokenizer">
+					<bean
+						class="org.springframework.batch.item.file.transform.DelimitedLineTokenizer">
+						<property name="delimiter" value="," />
+					</bean>
+				</property>
+				<property name="fieldSetMapper">
+					<bean
+						class="org.springframework.batch.item.file.mapping.PassThroughFieldSetMapper" />
+				</property>
+			</bean>
+		</property>
+		<property name="linesToSkip" value="1" />
+	</bean>
+
+
+	<bean id="tradeWriter"
+		class="com.ghosh.sanjay.writers.TradeWriter">
+	</bean>
+
+	<bean id="validatingProcessor"
+		class="com.ghosh.sanjay.validators.TradeProcessor">
+		<property name="validator">
+			<bean
+				class="org.springframework.batch.item.validator.SpringValidator">
+				<property name="validator">
+					<bean class="com.ghosh.sanjay.validators.TradeValidator" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+</beans>

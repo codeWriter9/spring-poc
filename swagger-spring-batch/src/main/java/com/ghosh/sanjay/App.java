@@ -28,8 +28,6 @@ public class App implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		context = new ClassPathXmlApplicationContext("config/application-context.xml");
 		LOG.info("Application Context has been loaded ! ");
-		// asList(context.getBeanDefinitionNames()).forEach((bean) -> LOG.info("bean :"
-		// + bean));
 		JobLauncher launcher = (JobLauncher) context.getBean("jobLauncher");
 		Job job = (Job) context.getBean("tradeJob");
 		launcher.run(job, new JobParameters());

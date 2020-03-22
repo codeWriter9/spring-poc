@@ -5,16 +5,22 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/batch https://www.springframework.org/schema/batch/spring-batch.xsd">
 		
+		<step id="pollStep"  abstract="true" xmlns="http://www.springframework.org/schema/batch">
+			<tasklet ref="pollingTasklet" />
+		</step>
 		
 	<step id="readerWriterStep" abstract="true" xmlns="http://www.springframework.org/schema/batch">
 			<tasklet>
 				<chunk commit-interval="10"/>				
 			</tasklet>
-		</step>
+	</step>
+	
+	<bean id="pollingTasklet" class="com.ghosh.sanjay.adapters.PollingAdapterTasklet"></bean>
 
 	<job id="tradeJob"
 		xmlns="http://www.springframework.org/schema/batch">
-		<step id="step1"  parent="readerWriterStep"  next="decision">
+		<step id="poll"  parent="pollStep" next="readWrite"/>		
+		<step id="readWrite"  parent="readerWriterStep"  next="decision">
 			<tasklet>
 				<chunk reader="reader" writer="writer"
 					processor="validatingProcessor">
@@ -22,7 +28,7 @@
 			</tasklet>
 		</step>
 		<decision id="decision" decider="decider">
-			<next on="CONTINUE" to="step1" />
+			<next on="CONTINUE" to="readWrite" />
 			<end on="COMPLETED" />
 		</decision>
 	</job>

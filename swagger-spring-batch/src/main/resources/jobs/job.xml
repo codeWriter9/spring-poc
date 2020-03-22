@@ -4,13 +4,20 @@
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/batch https://www.springframework.org/schema/batch/spring-batch.xsd">
+		
+		
+	<step id="readerWriterStep" abstract="true" xmlns="http://www.springframework.org/schema/batch">
+			<tasklet>
+				<chunk commit-interval="10"/>				
+			</tasklet>
+		</step>
 
 	<job id="tradeJob"
 		xmlns="http://www.springframework.org/schema/batch">
-		<step id="step1" next="decision">
+		<step id="step1"  parent="readerWriterStep"  next="decision">
 			<tasklet>
 				<chunk reader="reader" writer="writer"
-					processor="validatingProcessor" commit-interval="1">
+					processor="validatingProcessor">
 				</chunk>
 			</tasklet>
 		</step>

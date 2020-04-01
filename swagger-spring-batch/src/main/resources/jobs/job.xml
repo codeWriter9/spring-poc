@@ -5,9 +5,9 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/batch https://www.springframework.org/schema/batch/spring-batch.xsd">
 		
-		<step id="pollStep"  abstract="true" xmlns="http://www.springframework.org/schema/batch">
-			<tasklet ref="pollingTasklet" />
-		</step>
+	<step id="pollStep"  abstract="true" xmlns="http://www.springframework.org/schema/batch">
+		<tasklet ref="pollingTasklet" />
+	</step>
 		
 	<step id="readerWriterStep" abstract="true" xmlns="http://www.springframework.org/schema/batch">
 			<tasklet>

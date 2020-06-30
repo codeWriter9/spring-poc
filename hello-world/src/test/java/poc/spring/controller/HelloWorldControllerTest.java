@@ -26,7 +26,8 @@ public class HelloWorldControllerTest {
 	private HelloWorldController helloWorldController;
 
 	@Autowired
-	private String helloWorld;
+	private String helloWorld;	
+	
 
 	@Before
 	public void setUp() {

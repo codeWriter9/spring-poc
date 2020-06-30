@@ -1,0 +1,8 @@
+df:
+   application:
+     name: spring boot yml example
+   datasource:
+     driverClassName: com.mysql.jdbc.Driver
+     url: jdbc:mysql://localhost/test
+application:
+   port: 9000

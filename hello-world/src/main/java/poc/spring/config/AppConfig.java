@@ -6,8 +6,11 @@ import static org.slf4j.LoggerFactory.getLogger;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+
+import poc.spring.conditionals.SampleCondition;
 
 /**
  * 
@@ -39,6 +42,7 @@ public class AppConfig {
 	 * @return String
 	 */
 	@Bean
+	@Conditional(SampleCondition.class)
 	public String helloWorld() {
 		return helloWorld;
 	}

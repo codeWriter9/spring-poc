@@ -1,3 +1,4 @@
+# https://github.com/github/gitignore/blob/master/Java.gitignore
 # Compiled class file
 *.class
 
@@ -38,6 +39,10 @@
 hs_err_pid*
 
 
+#eclipse file(s)
 .classpath
 .project
 .*.prefs
+../
+target
+target/*

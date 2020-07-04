@@ -1,0 +1,1 @@
+mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.3 -DinteractiveMode=false -DgroupId=com.ghosh.sanjay -DartifactId=swagger-rest-client

@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 import poc.spring.conditionals.SampleCondition;
+import poc.spring.service.HelloWorldService;
+import poc.spring.service.IService;
 
 /**
  * 
@@ -45,6 +47,12 @@ public class AppConfig {
 	@Conditional(SampleCondition.class)
 	public String helloWorld() {
 		return helloWorld;
+	}
+	
+	@Bean
+	@Conditional(SampleCondition.class)
+	public IService helloWorldService() {
+		return new HelloWorldService();
 	}
 
 }

@@ -33,7 +33,7 @@
 		
 		<dependency>
   			<groupId>junit</groupId>
-  			<artifactId>junit</artifactId>
+  			<artifactId>junit</artifactId><!--$NO-MVN-MAN-VER$-->
   			<version>4.13.1</version>
 			<scope>test</scope>
 		</dependency>

@@ -28,7 +28,7 @@ public class App {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Hello World!");
+		LOG.info("Hello World!");
 		ApplicationContext context = SpringApplication.run(App.class, args);
 	}
 }

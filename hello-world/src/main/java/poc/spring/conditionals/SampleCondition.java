@@ -21,6 +21,7 @@ public class SampleCondition implements Condition {
 	@Override
 	public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {		
 		LOG.info(" feed " + feed);
+		LOG.info(" env " + conditionContext.getEnvironment());		
 		return true;
 	}
 }

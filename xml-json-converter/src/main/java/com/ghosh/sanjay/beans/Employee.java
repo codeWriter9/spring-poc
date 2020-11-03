@@ -1,14 +1,14 @@
 package com.ghosh.sanjay.beans;
 
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
@@ -22,14 +22,13 @@ import com.ghosh.sanjay.adapters.JsonLocalDateTimeSerializer;
 import com.ghosh.sanjay.adapters.LocalDateTimeXmlAdapter;
 import com.ghosh.sanjay.adapters.LocalDateXmlAdapter;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
+
+@Data
 @XmlRootElement(name = "employee", namespace = "http://www.internet.org/")
 @XmlAccessorType(XmlAccessType.FIELD)
-@Setter
-@Getter
-@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Employee {
 
 	@XmlElement(name = "id", namespace = "http://www.internet.org/", required = true)
@@ -59,17 +58,21 @@ public class Employee {
 	@XmlElement(name = "address", namespace = "http://www.internet.org/", required = true)
 	Address address;
 
+	@XmlElementWrapper(name = "emailAddresses", namespace = "http://www.internet.org/", required = true)
+	@XmlElement(name = "emailAddress", namespace = "http://www.internet.org/", required = true)	
+	List<String> emailAddress;
+
+	@XmlElementWrapper(name = "locations", namespace = "http://www.internet.org/", required = true)
+	@XmlElement(name = "location", namespace = "http://www.internet.org/", required = true)
+	List<Location> locations;
+
 	@Override
 	public String toString() {
-		return new StringBuffer("Employee=(")
-				.append(Objects.toString(id)).append(Objects.toString(", "))
-				.append(Objects.toString(name)).append(Objects.toString(", "))
-				.append(Objects.toString(salary)).append(Objects.toString(", "))
-				.append(Objects.toString(age)).append(Objects.toString(", "))
+		return new StringBuffer("Employee=(").append(Objects.toString(id)).append(Objects.toString(", "))
+				.append(Objects.toString(name)).append(Objects.toString(", ")).append(Objects.toString(salary))
+				.append(Objects.toString(", ")).append(Objects.toString(age)).append(Objects.toString(", "))
 				.append(Objects.toString(dateOfJoining)).append(Objects.toString(", "))
-				.append(Objects.toString(lastLogin)).append(Objects.toString(", "))
-				.append(Objects.toString(address)).append(Objects.toString(")"))	
-				.toString();
+				.append(Objects.toString(lastLogin)).append(Objects.toString(", ")).append(Objects.toString(address))
+				.append(Objects.toString(")")).toString();
 	}
-
 }

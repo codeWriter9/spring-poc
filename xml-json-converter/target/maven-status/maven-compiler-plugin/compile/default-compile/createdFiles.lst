@@ -1,9 +1,0 @@
-com\ghosh\sanjay\beans\Employee.class
-com\ghosh\sanjay\adapters\JsonLocalDateSerializer.class
-com\ghosh\sanjay\adapters\JsonLocalDateTimeDeserializer.class
-com\ghosh\sanjay\App.class
-com\ghosh\sanjay\adapters\LocalDateTimeXmlAdapter.class
-com\ghosh\sanjay\beans\Address.class
-com\ghosh\sanjay\adapters\JsonLocalDateDeserializer.class
-com\ghosh\sanjay\adapters\JsonLocalDateTimeSerializer.class
-com\ghosh\sanjay\adapters\LocalDateXmlAdapter.class

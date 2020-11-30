@@ -12,14 +12,19 @@ import org.junit.Test;
 
 import lombok.extern.slf4j.Slf4j;
 
+import static java.lang.String.*;
+import static java.nio.file.Files.*;
+import static java.nio.file.Paths.*;
+
+
 @Slf4j
 public class FileUtilTest {
 
 	private String employeeXml;
 
 	@Before
-	public void before() throws IOException, URISyntaxException {
-		employeeXml = String.join("", Files.readAllLines(Paths.get(getClass().getClassLoader().getResource("xmls/employee.xml").toURI())));
+	public void before() throws IOException, URISyntaxException {		
+		employeeXml = join("", readAllLines(get(getClass().getClassLoader().getResource("xmls/employee.xml").toURI())));
 	}
 
 	@Test

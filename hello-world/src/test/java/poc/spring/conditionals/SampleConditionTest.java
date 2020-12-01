@@ -17,7 +17,6 @@ import static org.mockito.Mockito.*;
 import static org.slf4j.LoggerFactory.getLogger;
 
 @RunWith(MockitoJUnitRunner.class)
-
 public class SampleConditionTest {
 	
 	private static Logger LOG = getLogger(lookup().lookupClass());

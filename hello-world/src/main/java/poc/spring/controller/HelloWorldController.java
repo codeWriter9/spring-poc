@@ -26,7 +26,7 @@ public class HelloWorldController {
 	 * 
 	 */
 	@Autowired
-	private String helloWorld;
+	protected String helloWorld;
 
 	/**
 	 * 

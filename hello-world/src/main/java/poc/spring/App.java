@@ -19,7 +19,6 @@ import poc.spring.service.IService;
  *
  */
 @SpringBootApplication
-@EnableAutoConfiguration
 public class App implements CommandLineRunner {
 
 	private static Logger LOG = getLogger(lookup().lookupClass());

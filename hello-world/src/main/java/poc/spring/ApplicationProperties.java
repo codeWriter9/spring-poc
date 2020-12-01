@@ -11,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @Getter 
 @Setter
-//@ToString
 @ConfigurationProperties(prefix="application")
 public class ApplicationProperties {
 	

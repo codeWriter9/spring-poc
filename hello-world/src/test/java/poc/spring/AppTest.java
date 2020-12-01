@@ -36,7 +36,7 @@ public class AppTest {
 
 	@Before
 	public void test() {
-		System.setProperty("feed", "feed");
+		
 	}
 	
 	@Test

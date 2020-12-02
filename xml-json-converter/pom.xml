@@ -18,7 +18,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<spring-boot-version>2.1.6.RELEASE</spring-boot-version>
-		<fasterxml-jackson-version>2.9.8</fasterxml-jackson-version>
+		<fasterxml-jackson-version>2.11.3</fasterxml-jackson-version>
 	</properties>
 
 	<dependencies>

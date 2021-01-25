@@ -13,6 +13,7 @@
         <module>swagger-spring-boot</module>
         <module>swagger-rest-client</module>
         <module>swagger-spring-batch</module>
+        <module>spring-simple-jpa</module>
         <module>xml-json-converter</module>
     </modules>
 </project>

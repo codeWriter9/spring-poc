@@ -23,6 +23,7 @@ import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  * Simple repository interface for {@link User} instances. The interface is used to declare so called query methods,
@@ -68,7 +69,7 @@ public interface SimpleUserRepository extends CrudRepository<User, Long> {
 	 * @return
 	 */
 	@Query("select u from User u where u.firstname = :firstname")
-	List<User> findByFirstname(String firstname);
+	List<User> findByFirstname(@Param("firstname") String firstname);
 
 	/**
 	 * Returns all users with the given name as first- or lastname. This makes the query to method relation much more
@@ -129,5 +130,15 @@ public interface SimpleUserRepository extends CrudRepository<User, Long> {
 	 * @return
 	 */
 	@Query("select u from User u where u.firstname = :#{#user.firstname} or u.lastname = :#{#user.lastname}")
+	
 	Iterable<User> findByFirstnameOrLastname(User user);
+	
+	/**
+	 * Return all the users with the given firstname or lastname. Makes use of SpEL (Spring Expression Language).
+	 *
+	 * @param user
+	 * @return
+	 */
+	@Query("select u from User u where u.firstname = :firstname or u.lastname = :lastname")	
+	Iterable<User> findByFirstnameOrLastname(@Param("firstname") String firstname, @Param("lastname") String lastname);
 }

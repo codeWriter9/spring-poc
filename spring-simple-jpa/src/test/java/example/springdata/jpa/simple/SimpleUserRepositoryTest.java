@@ -175,12 +175,14 @@ public class SimpleUserRepositoryTest {
 		assertThat(resultDesc, hasItems(user1, user2));
 	}
 	
-	/**
+	
 	@Test
 	public void findByFirstnameOrLastname() throws Exception {
 		user = repository.save(user);
-		assertThat(repository.findByFirstnameOrLastname("lastname")).contains(user);
-	}	
+		assertThat(repository.findByFirstnameOrLastname(user.getFirstname(), user.getLastname())).contains(user);
+	}
+	
+	
 
 	@Test
 	public void findByFirstnameOrLastnameUsingSpEL() {
@@ -198,10 +200,9 @@ public class SimpleUserRepositoryTest {
 		reference.setFirstname("firstname");
 		reference.setLastname("lastname");
 
-		Iterable<User> users = repository.findByFirstnameOrLastname(reference);
+		Iterable<User> users = repository.findByFirstnameOrLastname(reference.getFirstname(), reference.getLastname());
 
 		assertThat(users, is(iterableWithSize(2)));
 		assertThat(users, hasItems(first, second));
-	}
-	**/
+	}	
 }

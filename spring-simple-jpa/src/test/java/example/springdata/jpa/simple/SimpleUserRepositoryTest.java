@@ -204,5 +204,5 @@ public class SimpleUserRepositoryTest {
 
 		assertThat(users, is(iterableWithSize(2)));
 		assertThat(users, hasItems(first, second));
-	}	
+	}		
 }

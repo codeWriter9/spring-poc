@@ -33,6 +33,7 @@ import org.springframework.data.repository.query.Param;
  * @author Thomas Darimont
  * @author Christoph Strobl
  */
+
 public interface SimpleUserRepository extends CrudRepository<User, Long> {
 
 	/**

@@ -18,6 +18,7 @@ package example.springdata.jpa.simple;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -28,13 +29,13 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
  * @author Thomas Darimont
  */
 @Entity
+@Table(name="user_table")
 @NamedQuery(name = "User.findByTheUsersName", query = "from User u where u.username = ?1")
 public class User extends AbstractPersistable<Long> {
 
 	private static final long serialVersionUID = -2952735933715107252L;
 
 	@Column(unique = true) private String username;
-
 	private String firstname;
 	private String lastname;
 
@@ -92,5 +93,15 @@ public class User extends AbstractPersistable<Long> {
 	 */
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+	
+	@Override
+	public int hashCode() {		
+		return super.hashCode();
+	}
+	
+	@Override
+	public boolean equals(Object obj) {		
+		return super.equals(obj);
 	}
 }

@@ -48,13 +48,14 @@ import org.springframework.transaction.annotation.Transactional;
 @SpringBootTest
 public class SimpleUserRepositoryTest {
 
-	@Autowired SimpleUserRepository repository;
+	@Autowired 
+	SimpleUserRepository repository;
 	User user;
 
 	@Before
 	public void setUp() {
 
-		user = new User();
+		user = new User(1L);		
 		user.setUsername("foobar");
 		user.setFirstname("firstname");
 		user.setLastname("lastname");

@@ -5,7 +5,7 @@
 
 	<groupId>com.ghosh.sanjay</groupId>
 	<artifactId>spring-simple-jpa</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>
 
 	<name>spring-simple-jpa</name>
 	<!-- FIXME change it to the project's website -->

@@ -67,6 +67,11 @@
 	<build>
 		<plugins>
 			<plugin>
+                                <groupId>org.springframework.boot</groupId>
+                                <artifactId>spring-boot-maven-plugin</artifactId>
+                                <version>${spring-boot-version}</version>
+                        </plugin>
+			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.0.0</version>
 			</plugin>

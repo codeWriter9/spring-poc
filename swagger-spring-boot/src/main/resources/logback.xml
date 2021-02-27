@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-
-  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-    <layout class="ch.qos.logback.classic.PatternLayout">
-      <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
-    </layout>
-  </appender>
-  
-  <logger name="org.ghosh.sanjay" level="INFO"/>
-  <logger name="org.springframework.test.context.support" level="ERROR"/>
-  <logger name="org.springframework.test.context" level="ERROR"/>  
-
-  <root level="INFO">
-    <appender-ref ref="STDOUT" />
-  </root>
+        <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+                <encoder>
+                        <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread]  %logger{36} - %msg%n</pattern>
+                </encoder>
+        </appender>
+        <root level="info">
+                <appender-ref ref="console" />
+        </root>
 </configuration>

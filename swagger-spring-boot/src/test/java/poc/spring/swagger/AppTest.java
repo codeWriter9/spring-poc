@@ -20,5 +20,6 @@ public class AppTest
     public void shouldAnswerWithTrue()
     {
         assertTrue( true );
+	LOG.info("App Test");
     }
 }

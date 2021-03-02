@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TradeWriter.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">swagger-spring-batch</a> &gt; <a href="index.source.html" class="el_package">com.ghosh.sanjay.writers</a> &gt; <span class="el_source">TradeWriter.java</span></div><h1>TradeWriter.java</h1><pre class="source lang-java linenums">package com.ghosh.sanjay.writers;
+
+import static java.lang.invoke.MethodHandles.lookup;
+import static org.slf4j.LoggerFactory.getLogger;
+
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.springframework.batch.item.ExecutionContext;
+import org.springframework.batch.item.ItemStream;
+import org.springframework.batch.item.ItemStreamException;
+import org.springframework.batch.item.ItemWriter;
+
+import com.ghosh.sanjay.domain.Trade;
+
+<span class="fc" id="L16">public class TradeWriter implements ItemWriter&lt;Trade&gt;, ItemStream {</span>
+	
+<span class="fc" id="L18">	private static Logger LOG = getLogger(lookup().lookupClass());</span>
+
+	@Override
+	public void close() throws ItemStreamException {	
+
+<span class="fc" id="L23">	}</span>
+
+	@Override
+	public void open(ExecutionContext arg0) throws ItemStreamException {		
+
+<span class="nc" id="L28">	}</span>
+
+	@Override
+	public void update(ExecutionContext arg0) throws ItemStreamException {		
+
+<span class="nc" id="L33">	}</span>
+	
+	@Override
+	public void write(List&lt;? extends Trade&gt; arg0) throws Exception {		
+<span class="nc" id="L37">		LOG.info(&quot; writing &quot; + arg0);</span>
+<span class="nc" id="L38">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

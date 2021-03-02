@@ -62,8 +62,28 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-
-
+			<plugin>
+                                <artifactId>maven-resources-plugin</artifactId>
+                                <version>3.0.2</version>
+                                <executions>
+                                      <execution>
+                                      <id>copy-resources</id>
+                                      <phase>install</phase>
+                                      <goals>
+                                          <goal>copy-resources</goal>
+                                      </goals>
+                                      <configuration>
+                                          <outputDirectory>${basedir}/code-coverage</outputDirectory>
+                                          <resources>
+                                            <resource>
+                                                <directory>${basedir}/target/site/jacoco</directory>
+                                                <filtering>true</filtering>
+                                            </resource>
+                                          </resources>
+                                        </configuration>
+                              </execution>
+                            </executions>
+                        </plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>

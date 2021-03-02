@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+swagger-rest-client,com.ghosh.sanjay.config,AppConfig.SwaggerConfig,0,20,0,0,0,2,0,2,0,2
+swagger-rest-client,com.ghosh.sanjay.config,AppConfig,17,52,0,0,6,8,1,7,1,7
+swagger-rest-client,com.ghosh.sanjay.controllers,AbstractRestController,20,0,0,0,4,0,4,0,4,0
+swagger-rest-client,com.ghosh.sanjay.controllers,SendController,67,0,0,0,17,0,4,0,4,0
+swagger-rest-client,com.ghosh.sanjay.controllers,UploadController,143,0,10,0,32,0,10,0,5,0
+swagger-rest-client,com.ghosh.sanjay.validators,Validator,13,0,0,0,4,0,3,0,3,0
+swagger-rest-client,com.ghosh.sanjay,App,17,0,0,0,6,0,4,0,4,0

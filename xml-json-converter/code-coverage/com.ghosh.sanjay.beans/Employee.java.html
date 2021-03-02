@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Employee.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">xml-json-converter</a> &gt; <a href="index.source.html" class="el_package">com.ghosh.sanjay.beans</a> &gt; <span class="el_source">Employee.java</span></div><h1>Employee.java</h1><pre class="source lang-java linenums">package com.ghosh.sanjay.beans;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Objects;
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.ghosh.sanjay.adapters.JsonLocalDateDeserializer;
+import com.ghosh.sanjay.adapters.JsonLocalDateSerializer;
+import com.ghosh.sanjay.adapters.JsonLocalDateTimeDeserializer;
+import com.ghosh.sanjay.adapters.JsonLocalDateTimeSerializer;
+import com.ghosh.sanjay.adapters.LocalDateTimeXmlAdapter;
+import com.ghosh.sanjay.adapters.LocalDateXmlAdapter;
+
+import lombok.Data;
+
+
+<span class="pc bnc" id="L28" title="All 78 branches missed.">@Data</span>
+@XmlRootElement(name = &quot;employee&quot;, namespace = &quot;http://www.internet.org/&quot;)
+@XmlAccessorType(XmlAccessType.FIELD)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Employee {
+
+	@XmlElement(name = &quot;id&quot;, namespace = &quot;http://www.internet.org/&quot;, required = true)
+<span class="fc" id="L35">	Integer id;</span>
+
+	@XmlElement(name = &quot;name&quot;, namespace = &quot;http://www.internet.org/&quot;, required = true)
+<span class="fc" id="L38">	String name;</span>
+
+	@XmlElement(name = &quot;salary&quot;, namespace = &quot;http://www.internet.org/&quot;, required = true)
+<span class="fc" id="L41">	Double salary;</span>
+
+	@XmlElement(name = &quot;age&quot;, namespace = &quot;http://www.internet.org/&quot;, required = true)
+<span class="fc" id="L44">	Integer age;</span>
+
+	@XmlElement(name = &quot;dateOfJoining&quot;, namespace = &quot;http://www.internet.org/&quot;, required = true)
+	@XmlJavaTypeAdapter(value = LocalDateXmlAdapter.class)
+	@JsonSerialize(using = JsonLocalDateSerializer.class)
+	@JsonDeserialize(using = JsonLocalDateDeserializer.class)
+<span class="fc" id="L50">	LocalDate dateOfJoining;</span>
+
+	@XmlElement(name = &quot;lastLogin&quot;, namespace = &quot;http://www.internet.org/&quot;, required = true)
+	@XmlJavaTypeAdapter(value = LocalDateTimeXmlAdapter.class)
+	@JsonSerialize(using = JsonLocalDateTimeSerializer.class)
+	@JsonDeserialize(using = JsonLocalDateTimeDeserializer.class)
+<span class="fc" id="L56">	LocalDateTime lastLogin;</span>
+
+	@XmlElement(name = &quot;address&quot;, namespace = &quot;http://www.internet.org/&quot;, required = true)
+<span class="fc" id="L59">	Address address;</span>
+
+	@XmlElementWrapper(name = &quot;emailAddresses&quot;, namespace = &quot;http://www.internet.org/&quot;, required = true)
+	@XmlElement(name = &quot;emailAddress&quot;, namespace = &quot;http://www.internet.org/&quot;, required = true)	
+<span class="fc" id="L63">	List&lt;String&gt; emailAddress;</span>
+
+	@XmlElementWrapper(name = &quot;locations&quot;, namespace = &quot;http://www.internet.org/&quot;, required = true)
+	@XmlElement(name = &quot;location&quot;, namespace = &quot;http://www.internet.org/&quot;, required = true)
+<span class="fc" id="L67">	List&lt;Location&gt; locations;</span>
+
+	@Override
+	public String toString() {
+<span class="fc" id="L71">		return new StringBuffer(&quot;Employee=(&quot;).append(Objects.toString(id)).append(Objects.toString(&quot;, &quot;))</span>
+<span class="fc" id="L72">				.append(Objects.toString(name)).append(Objects.toString(&quot;, &quot;)).append(Objects.toString(salary))</span>
+<span class="fc" id="L73">				.append(Objects.toString(&quot;, &quot;)).append(Objects.toString(age)).append(Objects.toString(&quot;, &quot;))</span>
+<span class="fc" id="L74">				.append(Objects.toString(dateOfJoining)).append(Objects.toString(&quot;, &quot;))</span>
+<span class="fc" id="L75">				.append(Objects.toString(lastLogin)).append(Objects.toString(&quot;, &quot;)).append(Objects.toString(address))</span>
+<span class="fc" id="L76">				.append(Objects.toString(&quot;)&quot;)).toString();</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

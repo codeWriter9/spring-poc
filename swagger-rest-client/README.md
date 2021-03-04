@@ -16,9 +16,9 @@ You should only need a git client like git bash, an IDE, maven 3.x and certainly
 
 For [Code Coverage reports](https://github.com/codeWriter9/spring-poc/blob/master/swagger-rest-client/code-coverage/jacoco.csv)
 
-'''
+```
 mvn clean install
-'''
+```
 
 run mvn clean install
 

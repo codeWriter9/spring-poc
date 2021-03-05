@@ -25,7 +25,7 @@ import com.ghosh.sanjay.adapters.LocalDateXmlAdapter;
 import lombok.Data;
 
 
-<span class="pc bnc" id="L28" title="All 78 branches missed.">@Data</span>
+<span class="pc bpc" id="L28" title="57 of 78 branches missed.">@Data</span>
 @XmlRootElement(name = &quot;employee&quot;, namespace = &quot;http://www.internet.org/&quot;)
 @XmlAccessorType(XmlAccessType.FIELD)
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -66,14 +66,5 @@ public class Employee {
 	@XmlElement(name = &quot;location&quot;, namespace = &quot;http://www.internet.org/&quot;, required = true)
 <span class="fc" id="L67">	List&lt;Location&gt; locations;</span>
 
-	@Override
-	public String toString() {
-<span class="fc" id="L71">		return new StringBuffer(&quot;Employee=(&quot;).append(Objects.toString(id)).append(Objects.toString(&quot;, &quot;))</span>
-<span class="fc" id="L72">				.append(Objects.toString(name)).append(Objects.toString(&quot;, &quot;)).append(Objects.toString(salary))</span>
-<span class="fc" id="L73">				.append(Objects.toString(&quot;, &quot;)).append(Objects.toString(age)).append(Objects.toString(&quot;, &quot;))</span>
-<span class="fc" id="L74">				.append(Objects.toString(dateOfJoining)).append(Objects.toString(&quot;, &quot;))</span>
-<span class="fc" id="L75">				.append(Objects.toString(lastLogin)).append(Objects.toString(&quot;, &quot;)).append(Objects.toString(address))</span>
-<span class="fc" id="L76">				.append(Objects.toString(&quot;)&quot;)).toString();</span>
-	}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

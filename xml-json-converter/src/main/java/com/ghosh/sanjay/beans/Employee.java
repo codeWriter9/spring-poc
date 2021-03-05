@@ -66,13 +66,4 @@ public class Employee {
 	@XmlElement(name = "location", namespace = "http://www.internet.org/", required = true)
 	List<Location> locations;
 
-	@Override
-	public String toString() {
-		return new StringBuffer("Employee=(").append(Objects.toString(id)).append(Objects.toString(", "))
-				.append(Objects.toString(name)).append(Objects.toString(", ")).append(Objects.toString(salary))
-				.append(Objects.toString(", ")).append(Objects.toString(age)).append(Objects.toString(", "))
-				.append(Objects.toString(dateOfJoining)).append(Objects.toString(", "))
-				.append(Objects.toString(lastLogin)).append(Objects.toString(", ")).append(Objects.toString(address))
-				.append(Objects.toString(")")).toString();
-	}
 }

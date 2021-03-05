@@ -33,6 +33,7 @@ public class DataUtil {
 		employee.setId(id);
 		employee.setName(name);
 		employee.setSalary(salary);
+		employee.setAge(age);
 		employee.setDateOfJoining(dateOfJoining);
 		employee.setLastLogin(lastLogin);
 		employee.setAddress(address);

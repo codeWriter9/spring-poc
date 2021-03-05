@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-		<encoder>
-			<pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread]  %logger{36} - %msg%n</pattern>
-		</encoder>
-	</appender>
-
-	<root level="info">
-		<appender-ref ref="console" />
-	</root>
-	<include resource="org/springframework/boot/logging/logback/base.xml" />
+        <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+                <encoder>
+                        <pattern>[%-5level] %d{HH:mm:ss.SSS} [%thread]  %logger{36} - %msg%n</pattern>
+                </encoder>
+        </appender>
+        <root level="OFF"/>
+        <logger name="example.springdata.jpa.simple" level="DEBUG" additivity="false">
+                <appender-ref ref="console" />
+        </logger>
+	<logger name="org.apache.catalina.core" level="INFO" additivity="false">
+                <appender-ref ref="console" />
+        </logger>
+        <logger name="com.zaxxer" level="INFO" additivity="false">
+                <appender-ref ref="console" />
+        </logger>
+        <logger name="org.hibernate" level="INFO" additivity="false">
+                <appender-ref ref="console" />
+        </logger>
+        <include resource="org/springframework/boot/logging/logback/base.xml" />
         <logger name="org.springframework" level="OFF"/>
-
 </configuration>
+

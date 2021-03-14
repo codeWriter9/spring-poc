@@ -128,7 +128,9 @@
                                           <resources>
                                             <resource>
                                                 <directory>${basedir}/target/site/jacoco</directory>
-                                                <filtering>true</filtering>
+						<includes>
+                                                    <include>jacoco.csv</include>
+                                                </includes>
                                             </resource>
                                           </resources>
                                         </configuration>

@@ -28,7 +28,7 @@ public class App implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		service.service();
+		LOG.info(service.service());
 	}
 
 	public static void main(String[] args) throws IOException {

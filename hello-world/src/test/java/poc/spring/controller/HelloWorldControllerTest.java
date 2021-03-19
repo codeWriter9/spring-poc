@@ -39,6 +39,11 @@ public class HelloWorldControllerTest {
 		assertEquals(helloWorld, helloWorldController.helloWorld());
 	}
 
+	@Test
+	public void testHelloGuest() {
+		assertEquals("Hello Guest", helloWorldController.hello("Guest"));
+	}
+
 	@After
 	public void destroy() {
 		helloWorldController = null;

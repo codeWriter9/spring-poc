@@ -6,7 +6,12 @@ import static org.slf4j.LoggerFactory.getLogger;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import poc.spring.service.HelloWorldService;
+import poc.spring.service.IService;
 
 /**
  * 
@@ -29,6 +34,15 @@ public class HelloWorldController {
 	protected String helloWorld;
 
 	/**
+	 *
+	 *
+	 * Using hello world Service to return the message
+	 *
+	 **/
+	@Autowired
+	protected IService helloWorldService;
+
+	/**
 	 * 
 	 * Rest Controller
 	 * 
@@ -37,6 +51,19 @@ public class HelloWorldController {
 	@GetMapping("/helloWorld")
 	public String helloWorld() {
 		LOG.info("returning from GET method");
-		return helloWorld;
+		return helloWorldService.service();
+	}
+
+	/**
+	 *
+	 * Post Mapping
+	 *
+	 * @Param String Guest
+	 * @return String
+	 **/
+	@PostMapping("/hello")
+	public String hello(@RequestBody String guest) {
+		LOG.info("Hello " + guest);
+		return "Hello " + guest;
 	}
 }

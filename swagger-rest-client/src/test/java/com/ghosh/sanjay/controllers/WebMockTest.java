@@ -46,10 +46,10 @@ public class WebMockTest {
 	@Autowired	
 	private String url;
 
-	@MockBean
+	@Autowired
 	private SendController sendController;
 
-	@MockBean
+	@Autowired
 	private UploadController uploadController;
 	
 	@Before
@@ -62,7 +62,7 @@ public class WebMockTest {
 
 	@Test
 	public void checkSendPostMethod() throws Exception {
-		ResponseEntity<String> myEntity = new ResponseEntity<String>(HttpStatus.ACCEPTED);
+		ResponseEntity<String> myEntity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		Mockito.when(restTemplate.exchange(Matchers.any(),Matchers.eq(HttpMethod.POST),Matchers.<HttpEntity<String>>any(),Matchers.<ParameterizedTypeReference<String>>any()) ).thenReturn(myEntity);
 		this.mockMvc.perform(post("/send?name=Code")).andDo(print()).andExpect(status().isOk());
 	}

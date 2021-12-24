@@ -3,12 +3,14 @@ package poc.kata.repository;
 import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.stereotype.Repository;
 
 import poc.kata.domain.User;
 
-@Repository
+@RepositoryRestResource(collectionResourceRel = "user", path = "user")
 public interface UserRepository extends MongoRepository<User, String> {
-  List<User> findByNameContaining(String name);
-  List<User> findByUsername(String username);
+  List<User> findByNameContaining(@Param("name") String name);
+  List<User> findByUsername(@Param("username") String username);
 }

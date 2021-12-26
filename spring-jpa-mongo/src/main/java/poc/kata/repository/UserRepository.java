@@ -12,5 +12,5 @@ import poc.kata.domain.User;
 @RepositoryRestResource(collectionResourceRel = "user", path = "user")
 public interface UserRepository extends MongoRepository<User, String> {
   List<User> findByNameContaining(@Param("name") String name);
-  List<User> findByUsername(@Param("username") String username);
+  List<User> findByUsername(@Param("username") String username);  
 }

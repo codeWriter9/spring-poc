@@ -6,9 +6,9 @@ import static poc.spring.App.main;
 
 import java.io.IOException;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+//import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.slf4j.Logger;
@@ -22,7 +22,7 @@ import poc.spring.service.HelloWorldService;
 /**
  * Unit test for simple App.
  */
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
 public class AppTest {
@@ -38,7 +38,7 @@ public class AppTest {
 	@Autowired
 	private String helloWorld;
 
-	@Before
+	@BeforeEach
 	public void test() {
 		
 	}

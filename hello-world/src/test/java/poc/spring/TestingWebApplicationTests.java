@@ -1,9 +1,8 @@
 package poc.spring;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +13,11 @@ import poc.spring.controller.HelloWorldController;
 import poc.spring.service.HelloWorldService;
 
 import static java.lang.invoke.MethodHandles.lookup;
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.slf4j.LoggerFactory.getLogger;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 public class TestingWebApplicationTests {
 
 	private static Logger LOG = getLogger(lookup().lookupClass());	
@@ -29,7 +28,7 @@ public class TestingWebApplicationTests {
 	@Autowired
 	private HelloWorldService service;
 
-	@Before
+	@BeforeEach
 	public void before() {
 
 	}
@@ -40,7 +39,7 @@ public class TestingWebApplicationTests {
 		assertNotNull(service);
 	}
 	
-	@After
+	@AfterEach
 	public void after() {
 		controller = null;
 		service = null;

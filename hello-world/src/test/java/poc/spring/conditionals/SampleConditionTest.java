@@ -1,8 +1,8 @@
 package poc.spring.conditionals;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+//import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.slf4j.Logger;
@@ -12,11 +12,11 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
 import static java.lang.invoke.MethodHandles.lookup;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 import static org.slf4j.LoggerFactory.getLogger;
 
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 public class SampleConditionTest {
 	
 	private static Logger LOG = getLogger(lookup().lookupClass());
@@ -33,7 +33,7 @@ public class SampleConditionTest {
 	@Mock
 	private Environment env;
 	
-	@Before
+	@BeforeEach
 	public void before() {
 		condition = new SampleCondition();		
 		when(conditionContext.getEnvironment()).thenReturn(env);

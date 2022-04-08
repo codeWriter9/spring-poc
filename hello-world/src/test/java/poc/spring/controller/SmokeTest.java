@@ -5,8 +5,8 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 
 import java.util.HashMap;
 import java.util.Map;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+//import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
@@ -17,7 +17,7 @@ import poc.spring.controller.HelloWorldController;
 import poc.spring.service.HelloWorldService;
 
 @SpringBootTest(webEnvironment = RANDOM_PORT)
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 public class SmokeTest {
 	
 	@Autowired

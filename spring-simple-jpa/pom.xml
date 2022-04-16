@@ -16,7 +16,7 @@
 		<maven.compiler.source>17</maven.compiler.source>
 		<maven.compiler.target>17</maven.compiler.target>
 		<spring-boot-version>2.5.12</spring-boot-version>
-		<fasterxml-jackson-version>2.13.2</fasterxml-jackson-version>
+		<fasterxml-jackson-version>2.13.2.1</fasterxml-jackson-version>
 	</properties>
 
         <parent>

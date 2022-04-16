@@ -5,9 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.slf4j.LoggerFactory.getLogger;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class UserTest {
 	private SimpleUserRepository repository;
 	private User user;
 	
-	@Before
+	@BeforeEach
 	public void setUp() {
 		user = new User();
 		user.setUsername("foobar");
@@ -41,7 +41,7 @@ public class UserTest {
 		assertEquals("foobar", user.getUsername());
 	}
 	
-	@After
+	@AfterEach
 	public void destroy() {
 		
 	}

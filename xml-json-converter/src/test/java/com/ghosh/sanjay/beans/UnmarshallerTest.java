@@ -10,9 +10,9 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,7 +26,7 @@ public class UnmarshallerTest {
 	private JAXBContext employeeContext;
 	private ObjectMapper objectMapper;
 
-	@Before
+	@BeforeEach
 	public void before() throws IOException, URISyntaxException, JAXBException {
 		employeeXml = String.join("",
 				Files.readAllLines(Paths.get(getClass().getClassLoader().getResource("xmls/employee.xml").toURI())));
@@ -43,7 +43,7 @@ public class UnmarshallerTest {
 		log.info(json);
 	}
 
-	@After
+	@AfterEach
 	public void after() {
 		employeeXml = null;
 		employeeContext = null;

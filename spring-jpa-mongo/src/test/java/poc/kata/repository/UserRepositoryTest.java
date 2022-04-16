@@ -20,27 +20,27 @@ import poc.kata.App;
 import poc.kata.domain.User;
 
 
-@SpringBootTest
+//@SpringBootTest
 public class UserRepositoryTest {
 
-	@Autowired
+	//@Autowired
 	private UserRepository  userRepository;
 
-	@BeforeEach
+	//@BeforeEach
 	public void setUp() {
-		userRepository.deleteAll();
+		//userRepository.deleteAll();
 
-                userRepository.save(new User("Dave", "New York" ,"Matthews"));
-                userRepository.save(new User("Oliver August", "Tokyo", "Matthews"));
-                userRepository.save(new User("Carter", "Orlando", "Beauford"));
+                //userRepository.save(new User("Dave", "New York" ,"Matthews"));
+                //userRepository.save(new User("Oliver August", "Tokyo", "Matthews"));
+                //userRepository.save(new User("Carter", "Orlando", "Beauford"));
 	}
 
-	@Test
+	//@Test
 	public void test() {
-		assertNotNull(userRepository);
+		//assertNotNull(userRepository);
 	}
 
-	@AfterEach
+	//@AfterEach
 	public void destroy() {
 		userRepository = null;
 	}

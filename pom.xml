@@ -15,7 +15,7 @@
         <module>swagger-rest-client</module>
         <module>swagger-spring-batch</module>
         <module>spring-simple-jpa</module>
-        <module>spring-jpa-mongo</module>
-        <module>xml-json-converter</module>
+	<module>xml-json-converter</module>
+	<module>spring-jpa-mongo</module>
     </modules>
 </project>

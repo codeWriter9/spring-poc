@@ -6,15 +6,16 @@ import static org.slf4j.LoggerFactory.getLogger;
 
 
 import org.junit.jupiter.api.Test;
-//import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.ConfigFileApplicationContextInitializer;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-//@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @TestPropertySource("classpath:data/helloWorld.properties")
 @ContextConfiguration(initializers = ConfigFileApplicationContextInitializer.class)
 public class HelloWorldPropertyConfigurationTest {

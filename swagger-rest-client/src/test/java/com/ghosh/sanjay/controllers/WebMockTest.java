@@ -8,10 +8,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -26,13 +26,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.client.RestTemplate;
 
 import com.ghosh.sanjay.App;
 import com.ghosh.sanjay.config.AppConfig;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @WebMvcTest
 @ContextConfiguration(classes = { AppConfig.class, App.class })
 public class WebMockTest {
@@ -52,7 +53,7 @@ public class WebMockTest {
 	@Autowired
 	private UploadController uploadController;
 	
-	@Before
+	@BeforeEach
 	public void checkNotNull() throws Exception {
 		assertThat(sendController).isNotNull();
 		assertThat(uploadController).isNotNull();	
@@ -69,7 +70,7 @@ public class WebMockTest {
 
 
 
-	@After
+	@AfterEach
 	public void releaseObjects() {
 		
 	}

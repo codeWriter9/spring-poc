@@ -3,8 +3,8 @@ package com.ghosh.sanjay;
 import static java.lang.invoke.MethodHandles.lookup;
 import static org.slf4j.LoggerFactory.getLogger;
 
-import org.junit.After;
-import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -25,7 +25,7 @@ public class AppTest {
 	@Mock
 	private App app;
 
-	@Before
+	@BeforeEach
 	public void before() {
 		
 	}
@@ -44,7 +44,7 @@ public class AppTest {
 		App.main(new String[0]);
 	}
 
-	@After
+	@AfterEach
 	public void after() {
 		app = null;
 	}

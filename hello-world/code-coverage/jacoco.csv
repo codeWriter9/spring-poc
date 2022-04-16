@@ -1,1 +1,7 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+hello-world,poc.spring.controller,HelloWorldController,0,22,0,0,0,6,0,4,0,4
+hello-world,poc.spring.conditionals,SampleCondition,0,12,0,0,0,2,0,2,0,2
+hello-world,poc.spring.service,HelloWorldService,0,14,0,0,0,4,0,3,0,3
+hello-world,poc.spring.config,AppConfig,0,15,0,0,0,4,0,4,0,4
+hello-world,poc.spring,ApplicationProperties,0,14,0,0,0,4,0,4,0,4
+hello-world,poc.spring,App,5,14,0,0,2,4,1,3,1,3

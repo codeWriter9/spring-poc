@@ -18,16 +18,18 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 
 import static com.ghosh.sanjay.beans.DataUtil.location;
@@ -40,7 +42,7 @@ import static java.nio.file.Files.*;
 import static java.nio.file.Paths.*;
 
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 @ActiveProfiles("test")
 public class FileUtilTest {
@@ -59,7 +61,7 @@ public class FileUtilTest {
 
 	private JAXBContext employeeContext;
 
-	@Before
+	@BeforeEach
 	public void before() throws IOException, URISyntaxException {		
 		employeeXml = join("", readAllLines(get(getClass().getClassLoader().getResource("xmls/employee.xml").toURI())));
 		employee = employee(123, "Rajesh", 1000.0, 1000, LocalDate.of(2007,7, 2), LocalDateTime.of(2020, 10, 1, 9, 31, 32), address("ShivDham Apartments", "Western Express HighWay", "Mumbai", null, null, "Maharashtra", "India"),
@@ -73,12 +75,12 @@ public class FileUtilTest {
 		employeeContext = JAXBContext.newInstance(Employee.class);
 		Unmarshaller jaxbUnmarshaller = employeeContext.createUnmarshaller();
                 Employee employee2 = (Employee) jaxbUnmarshaller.unmarshal(new StringReader(employeeXml));
-		Assert.assertEquals(employee, employee2);
-		Assert.assertNotEquals(employee, new Object());
-		Assert.assertNotEquals(employee, anotherEmployee);
+		Assertions.assertEquals(employee, employee2);
+		Assertions.assertNotEquals(employee, new Object());
+		Assertions.assertNotEquals(employee, anotherEmployee);
 	}
 
-	@After
+	@AfterEach
 	public void after() {
 
 	}

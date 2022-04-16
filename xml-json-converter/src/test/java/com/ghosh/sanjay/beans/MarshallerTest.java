@@ -16,9 +16,9 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -41,7 +41,7 @@ public class MarshallerTest {
 	private Employee employee;
 	private Location location;
 	
-	@Before
+	@BeforeEach
 	public void before() throws IOException, URISyntaxException, JAXBException {
 		employeeXml = String.join("",
 				Files.readAllLines(Paths.get(getClass().getClassLoader().getResource("xmls/employee.xml").toURI())));
@@ -64,7 +64,7 @@ public class MarshallerTest {
 		log.info(str);
 	}
 	
-	@After
+	@AfterEach
 	public void after() {
 		employeeXml = null;
 		originalEmployeeXml = null;
